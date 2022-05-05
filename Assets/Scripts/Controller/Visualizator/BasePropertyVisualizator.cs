@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasePropertyVisualizator : MonoBehaviour
+public abstract class BasePropertyVisualizator : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private string PropertyKey;
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }

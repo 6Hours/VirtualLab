@@ -14,6 +14,10 @@ public abstract class BaseModel : MonoBehaviour
         modelProcess.Kill();
         modelProcess = DOTween.To(() => 0f, (v) => ModelCycleExecute(v), 1f, playbackSpeed);
     }
+    public virtual PropertyModel<object> GetProperty(string propertyKey)
+    {
+        return Properties[propertyKey];
+    }
     protected abstract void SetStartValues();
     protected abstract void ModelCycleExecute(float i);
 
