@@ -2,36 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+namespace Utils
 {
-    [SerializeField] private float xRange;
-    [SerializeField] private float yRange;
-    [SerializeField] private float zRange;
-
-
-    private Vector3 Min;
-    private Vector3 Max;
-
-    private Vector2 mouseStartPosition;
- 
-    void Start()
+    public class CameraController : MonoBehaviour
     {
-        Min = transform.position - new Vector3(xRange, yRange, zRange);
-        Max = transform.position + new Vector3(xRange, yRange, zRange);
-    }
+        [SerializeField] private float xRange;
+        [SerializeField] private float yRange;
+        [SerializeField] private float zRange;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetMouseButton(2))
+
+        private Vector3 Min;
+        private Vector3 Max;
+
+        private Vector2 mouseStartPosition;
+
+        void Start()
         {
-            mouseStartPosition = Input.mousePosition;
+            Min = transform.position - new Vector3(xRange, yRange, zRange);
+            Max = transform.position + new Vector3(xRange, yRange, zRange);
         }
 
-        transform.Translate(Vector3.forward * Input.mouseScrollDelta.y);
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetMouseButton(2))
+            {
+                mouseStartPosition = Input.mousePosition;
+            }
 
-        if (Input.GetMouseButtonDown(2))
-            transform.Translate((Vector2)Input.mousePosition - mouseStartPosition);
+            transform.Translate(Vector3.forward * Input.mouseScrollDelta.y);
+
+            if (Input.GetMouseButtonDown(2))
+                transform.Translate((Vector2)Input.mousePosition - mouseStartPosition);
+        }
+
     }
-    
 }

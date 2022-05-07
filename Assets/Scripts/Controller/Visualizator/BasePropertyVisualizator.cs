@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BasePropertyVisualizator : MonoBehaviour
+namespace UI.Visualizators.Property
 {
-    [SerializeField] private string PropertyKey;
-    void Start()
+    public abstract class BasePropertyVisualizator : MonoBehaviour
     {
-        
+        [SerializeField] private string PropertyKey;
+        void Start()
+        {
+
+        }
     }
 }
