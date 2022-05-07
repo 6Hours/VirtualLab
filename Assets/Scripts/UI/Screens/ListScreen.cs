@@ -1,15 +1,18 @@
+using Data.Items;
 using System.Collections;
 using System.Collections.Generic;
+using UI.Visualizators.Items;
 using UnityEngine;
 
 
 namespace UI.Screens
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class ListScreen : BaseScreen
-    {
+    {    
         [SerializeField] private GameObject listContainer;
         [SerializeField] private GameObject listElementPrefab;
-        //[SerializeField] private List<>
+        [SerializeField] private List<BaseItemVisualizator<BaseItem>> visualizators;
 
         public System.Action<object> OnItemClick;
 
@@ -40,7 +43,10 @@ namespace UI.Screens
 
         public void GenerateList(List<object> list)
         {
-            //for(var i = 0; i < Mathf.Max(); i++)
+            for(var i = 0; i < Mathf.Max(list.Count, visualizators.Count); i++)
+            {
+                
+            }
         }
     }
 }
