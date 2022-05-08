@@ -14,7 +14,7 @@ namespace UI.Screens
         [SerializeField] private GameObject listElementPrefab;
         [SerializeField] private List<BaseItemVisualizator<BaseItem>> visualizators;
 
-        public System.Action<object> OnItemClick;
+        public System.Action<BaseItem> OnItemClick;
 
         public override void Initialize()
         {
@@ -41,11 +41,21 @@ namespace UI.Screens
             base.Hide();
         }
 
-        public void GenerateList(List<object> list)
+        public void GenerateList(List<BaseItem> list)
         {
-            for(var i = 0; i < Mathf.Max(list.Count, visualizators.Count); i++)
+            for (var i = 0; i < Mathf.Max(list.Count, visualizators.Count); i++)
             {
-                
+                if (i < visualizators.Count)
+                {
+                    visualizators[i].gameObject.SetActive(i < list.Count);
+                    if (i < list.Count)
+                        visualizators[i].UpdateItem(list[i])
+                }
+                else
+                {
+                    //visualizators.Add(Instantiate(prefab, listParent));
+                    //.GetComponent<Text>().text = page.List[i];
+                }
             }
         }
     }
