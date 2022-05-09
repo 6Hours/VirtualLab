@@ -3,19 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UI.Visualizators.Property
+namespace Controllers.Property
 {
-    public abstract class BasePropertyVisualizator : MonoBehaviour
+    [System.Serializable]
+    public abstract class BasePropertyController : MonoBehaviour
     {
-        [SerializeField] private string propertyKey;
-        [SerializeField] private float compareMultiplier;
+        [SerializeField] protected string propertyKey;
+        [SerializeField] protected Vector3 scaleMultiplier;
 
-        private PropertyModel<object> property;
+        protected PropertyModel<object> property;
 
         private void Start()
         {
             property = FindObjectOfType<MainController>().GetModel().GetProperty(propertyKey);
             property.OnValueChanged += OnValueChanged;
+            OnValueChanged(property.Value);
         }
 
         protected abstract void OnValueChanged(object value);

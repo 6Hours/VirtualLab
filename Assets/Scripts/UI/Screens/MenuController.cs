@@ -32,5 +32,12 @@ namespace UI
         {
 
         }
+
+        private void UpdateBookList()
+        {
+
+
+            booksListScreen.GenerateList(null);
+        }
     }
 }
