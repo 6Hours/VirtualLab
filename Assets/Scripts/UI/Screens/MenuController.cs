@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UI.Screens;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -10,7 +11,7 @@ namespace UI
     {
         [SerializeField] private ListScreen booksListScreen;
         [SerializeField] private ListScreen labsListScreen;
-        private
+        [SerializeField] private Button backButton;
         // Start is called before the first frame update
         void Start()
         {
@@ -22,7 +23,9 @@ namespace UI
 
         private void OnBookClick(BaseItem item)
         {
-
+            booksListScreen.Hide();
+            labsListScreen.Show();
+            labsListScreen.GenerateList((item as BookItem).LabItems);
         }
 
         private void OnLabClick(BaseItem item)

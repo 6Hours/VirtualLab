@@ -4,20 +4,21 @@ using UnityEngine;
 
 namespace UI.Screens
 {
+    [System.Serializable]
     public abstract class BaseScreen
     {
-        [SerializeField] protected GameObject screenRoot;
+        [SerializeField] protected RectTransform screenRoot;
 
         public abstract void Initialize();
         
         public virtual void Show()
         {
-            screenRoot.SetActive(true);
+            screenRoot.gameObject.SetActive(true);
         }
 
         public virtual void Hide()
         {
-            screenRoot.SetActive(false);
+            screenRoot.gameObject.SetActive(false);
         }
 
         protected virtual void OnShowComplete()
