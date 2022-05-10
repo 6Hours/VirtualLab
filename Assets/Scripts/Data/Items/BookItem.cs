@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Data.Items
 {
+    [System.Serializable]
     public class BookItem : BaseItem
     {
         public string Title { get; private set; }
