@@ -16,7 +16,7 @@ namespace UI.Visualizators.Items
         private void Start()
         {
             button.onClick.AddListener(() => OnItemChoise?.Invoke(this));
-            button.onClick.AddListener(() => OpenLink());
+            openLink.onClick.AddListener(() => OpenLink());
         }
         public override void UpdateItem(BookItem _item)
         {

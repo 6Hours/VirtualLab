@@ -8,12 +8,14 @@ using DG.Tweening;
 namespace UI.Screens
 {
     [System.Serializable]
-    public class ListScreen : BaseScreen
+    public class BooksScreen : BaseScreen
     {    
         [SerializeField] private RectTransform listContainer;
         [SerializeField] private GameObject listElementPrefab;
-        [SerializeField] private List<BaseItemVisualizator<BaseItem>> visualizators;
         [SerializeField] private CanvasGroup canvasGroup;
+
+        private List<BookItemVisualizator> visualizators = new List<BookItemVisualizator>();
+        private float animDuration = 0.5f;
 
         public System.Action<BaseItem> OnItemClick;
 
@@ -28,7 +30,7 @@ namespace UI.Screens
             {
                 canvasGroup.alpha = v;
                 screenRoot.localScale = Vector2.one * Mathf.Clamp(v + 0.5f, 0f, 1f);
-            }, 1f, 1f).OnComplete(OnShowComplete);
+            }, 1f, animDuration).OnComplete(OnShowComplete);
         }
 
         public override void Hide()
@@ -37,7 +39,7 @@ namespace UI.Screens
             {
                 canvasGroup.alpha = v;
                 screenRoot.localScale = Vector2.one * Mathf.Clamp(v + 0.5f, 0f, 1f);
-            }, 0f, 1f).OnComplete(OnHideComplete);
+            }, 0f, animDuration).OnComplete(OnHideComplete);
         }
 
         protected override void OnShowComplete()
@@ -58,17 +60,17 @@ namespace UI.Screens
                 {
                     visualizators[i].gameObject.SetActive(i < list.Count);
                     if (i < list.Count)
-                        visualizators[i].UpdateItem(list[i]);
+                        visualizators[i].UpdateItem((BookItem)list[i]);
                 }
                 else
                 {
-                    visualizators.Add(Object.Instantiate(listElementPrefab, listContainer).GetComponent<BaseItemVisualizator<BaseItem>>());
-                    visualizators[i].UpdateItem(list[i]);
+                    visualizators.Add(GameObject.Instantiate(listElementPrefab, listContainer).GetComponent<BookItemVisualizator>());
+                    visualizators[i].UpdateItem((BookItem)list[i]);
                     visualizators[i].OnItemChoise += OnClick;
                 }
             }
         }
-        private void OnClick(BaseItemVisualizator<BaseItem> visualizator)
+        private void OnClick(BaseItemVisualizator<BookItem> visualizator)
         {
             OnItemClick?.Invoke(visualizator.Item);
         }
