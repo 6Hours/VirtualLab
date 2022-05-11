@@ -9,20 +9,24 @@ namespace UI.Visualizators.Items
     public class BookItemVisualizator : BaseItemVisualizator<BookItem>
     {
         [SerializeField] private Button button;
+        [SerializeField] private Button openLink;
         [SerializeField] private Image icon;
         [SerializeField] private Text titleText;
-        [SerializeField] private Text descriptionText;
 
         private void Start()
         {
             button.onClick.AddListener(() => OnItemChoise?.Invoke(this));
+            button.onClick.AddListener(() => OpenLink());
         }
         public override void UpdateItem(BookItem _item)
         {
             base.UpdateItem(_item);
             titleText.text = Item.Title;
-            descriptionText.text = Item.Description;
             icon.sprite = Item.Icon;
+        }
+        private void OpenLink()
+        {
+            Application.OpenURL(Item.Link);
         }
     }
 }

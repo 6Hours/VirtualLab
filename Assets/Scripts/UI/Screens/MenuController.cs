@@ -19,6 +19,7 @@ namespace UI
             labsListScreen.Initialize();
             booksListScreen.OnItemClick += OnBookClick;
             labsListScreen.OnItemClick += OnLabClick;
+            booksListScreen.GenerateList(Data.DataManager.Instance.GetBooksList());
         }
 
         private void OnBookClick(BaseItem item)
