@@ -10,7 +10,7 @@ namespace UI.Visualizators.Properties
     {
         [SerializeField] protected string propertyKey;
 
-        protected PropertyModel<object> property;
+        protected PropertyModel property;
 
         protected virtual void Start()
         {

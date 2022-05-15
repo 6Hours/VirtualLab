@@ -8,8 +8,8 @@ namespace Data.Model
 {
     public abstract class BaseModel : MonoBehaviour
     {
-        Dictionary<string, PropertyModel<object>> Properties = new Dictionary<string, PropertyModel<object>>();
-        Tween modelProcess;
+        protected Dictionary<string, PropertyModel> Properties = new Dictionary<string, PropertyModel>();
+        protected Tween modelProcess;
 
         public abstract void InitializeModel();
         public virtual void PlayModel(float playbackSpeed)
@@ -18,7 +18,7 @@ namespace Data.Model
             SetStartValues();
             modelProcess = DOTween.To(() => 0f, (v) => ModelCycleExecute(v), 1f, playbackSpeed);
         }
-        public virtual PropertyModel<object> GetProperty(string propertyKey)
+        public virtual PropertyModel GetProperty(string propertyKey)
         {
             return Properties[propertyKey];
         }

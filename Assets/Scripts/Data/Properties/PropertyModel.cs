@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Data.Property
 {
-    public abstract class PropertyModel<T>
+    public abstract class PropertyModel
     {
-        public T MinValue;
-        public T ValueSpace;
-        public System.Action<T> OnValueChanged;
+        public object MinValue;
+        public object ValueSpace;
+        public System.Action<object> OnValueChanged;
 
-        private T _value;
+        private object _value;
 
-        public T Value
+        public object Value
         {
             get
             {
@@ -25,6 +25,6 @@ namespace Data.Property
             }
         }
 
-        protected abstract T ClampValue(T value);
+        protected abstract object ClampValue(object value);
     }
 }

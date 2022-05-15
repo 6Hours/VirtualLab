@@ -4,11 +4,16 @@ using UnityEngine;
 
 namespace Data.Property
 {
-    public class PropertyInt : PropertyModel<int>
+    public class PropertyInt : PropertyModel
     {
-        protected override int ClampValue(int value)
+        public PropertyInt(int min, int space)
         {
-            return Mathf.Clamp(value, MinValue, MinValue + ValueSpace);
+            MinValue = min;
+            ValueSpace = space;
+        }
+        protected override object ClampValue(object value)
+        {
+            return Mathf.Clamp((int)value, (int)MinValue, (int)MinValue + (int)ValueSpace);
         }
     }
 }

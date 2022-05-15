@@ -11,7 +11,7 @@ namespace Controllers.Property
         [SerializeField] protected string propertyKey;
         [SerializeField] protected Vector3 scaleMultiplier;
 
-        protected PropertyModel<object> property;
+        protected PropertyModel property;
 
         private void Start()
         {
