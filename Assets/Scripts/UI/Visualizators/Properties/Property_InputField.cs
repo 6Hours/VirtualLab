@@ -8,16 +8,18 @@ namespace UI.Visualizators.Properties
     [System.Serializable]
     public class Property_InputField : BasePropertyVisualizator
     {
-        [SerializeField] private InputField textElement;
+        [SerializeField] private InputField inputField;
         protected override void Start()
         {
             base.Start();
+            inputField.onValueChanged.AddListener(OnValueChanged);
             property.OnValueChanged += OnValueChanged;
         }
 
         private void OnValueChanged(object value)
         {
-            textElement.text = value.ToString();
+            property.Value = value;
+            inputField.SetTextWithoutNotify(value.ToString());
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Data.Model
         public virtual void PlayModel(float playbackSpeed)
         {
             modelProcess.Kill();
+            SetStartValues();
             modelProcess = DOTween.To(() => 0f, (v) => ModelCycleExecute(v), 1f, playbackSpeed);
         }
         public virtual PropertyModel<object> GetProperty(string propertyKey)
@@ -22,7 +23,11 @@ namespace Data.Model
             return Properties[propertyKey];
         }
         protected abstract void SetStartValues();
-        protected abstract void ModelCycleExecute(float i);
+        protected abstract void ModelCycleExecute(float progress);
 
+        public virtual void Stop()
+        {
+            modelProcess.Kill();
+        }
     }
 }

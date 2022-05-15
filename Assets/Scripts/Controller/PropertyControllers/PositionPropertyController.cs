@@ -12,7 +12,7 @@ namespace Controllers.Property
         protected override void OnValueChanged(object value)
         {
             var tempScale = scaleMultiplier;
-            tempScale.Scale(transform.position);
+            tempScale.Scale(transform.localScale);
             transform.position = (positionMoveMultiplier * (float)value + tempScale); 
         }
     }
