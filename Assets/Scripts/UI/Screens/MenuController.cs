@@ -13,6 +13,7 @@ namespace UI
         [SerializeField] private BooksScreen booksScreen;
         [SerializeField] private LabsScreen labsScreen;
         [SerializeField] private Button backButton;
+        [SerializeField] private Text screenTitle;
         // Start is called before the first frame update
         void Start()
         {
@@ -32,6 +33,7 @@ namespace UI
             labsScreen.Show();
             backButton.gameObject.SetActive(true);
             labsScreen.GenerateList((item as BookItem).LabItems);
+            screenTitle.text = (item as BookItem).Title;
         }
 
         private void OnLabClick(BaseItem item)
@@ -50,6 +52,7 @@ namespace UI
             backButton.gameObject.SetActive(false);
             booksScreen.Show();
             labsScreen.Hide();
+            screenTitle.text = "VirtuaLab";
         }
     }
 }
