@@ -13,6 +13,7 @@ namespace UI.Visualizators.Properties
         {
             base.Start();
             inputField.onEndEdit.AddListener(OnValueChanged);
+            inputField.SetTextWithoutNotify(property.Value.ToString());
         }
 
         private void OnValueChanged(object value)

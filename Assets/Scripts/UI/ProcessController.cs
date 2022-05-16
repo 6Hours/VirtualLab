@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -10,11 +11,13 @@ namespace UI
     {
         [SerializeField] private Button playButton;
         [SerializeField] private Button stopButton;
+        [SerializeField] private Button homeButton;
 
         void Start()
         {
             playButton.onClick.AddListener(OnPlayClick);
             stopButton.onClick.AddListener(OnStopClick);
+            homeButton.onClick.AddListener(OnHomeClick);
         }
 
         private void OnPlayClick()
@@ -28,6 +31,10 @@ namespace UI
             FindObjectOfType<BaseModel>().Stop();
             playButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(false);
+        }
+        private void OnHomeClick()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
