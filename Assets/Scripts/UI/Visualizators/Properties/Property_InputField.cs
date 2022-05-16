@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,13 +12,12 @@ namespace UI.Visualizators.Properties
         protected override void Start()
         {
             base.Start();
-            inputField.onValueChanged.AddListener(OnValueChanged);
-            property.OnValueChanged += OnValueChanged;
+            inputField.onEndEdit.AddListener(OnValueChanged);
         }
 
         private void OnValueChanged(object value)
         {
-            property.Value = value;
+            property.Value = (float)Convert.ToDouble(value);
             inputField.SetTextWithoutNotify(value.ToString());
         }
     }

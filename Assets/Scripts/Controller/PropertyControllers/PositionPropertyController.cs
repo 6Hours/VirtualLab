@@ -13,7 +13,7 @@ namespace Controllers.Property
         {
             var tempScale = scaleMultiplier;
             tempScale.Scale(transform.localScale);
-            transform.position = (positionMoveMultiplier * (float)value + tempScale); 
+            transform.localPosition = (positionMoveMultiplier * (float)value + tempScale); 
         }
     }
 }

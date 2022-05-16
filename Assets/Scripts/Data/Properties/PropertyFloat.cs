@@ -11,7 +11,6 @@ namespace Data.Property
             MinValue = min;
             ValueSpace = space;
         }
-
         protected override object ClampValue(object value)
         {
             return Mathf.Clamp((float)value, (float)MinValue, (float)MinValue + (float)ValueSpace);

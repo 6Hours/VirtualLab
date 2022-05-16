@@ -9,7 +9,7 @@ namespace Controllers.Property
     {
         protected override void OnValueChanged(object value)
         {
-            transform.localScale = Vector3.one + scaleMultiplier * (float) value;
+            transform.localScale = Vector3.one + Vector3.down + scaleMultiplier * (float) value;
         }
     }
 }

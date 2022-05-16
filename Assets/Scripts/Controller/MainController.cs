@@ -19,6 +19,6 @@ public class MainController : MonoBehaviour
 
     public BaseModel GetModel()
     {
-        return null;
+        return FindObjectOfType<BaseModel>();
     }
 }
