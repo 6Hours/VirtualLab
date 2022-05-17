@@ -26,6 +26,7 @@ namespace UI.Visualizators.Items
         }
         private void OpenLink()
         {
+            Application.OpenURL(Item.Link);
             GUIUtility.systemCopyBuffer = Item.Link;
         }
     }
